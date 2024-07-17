@@ -4,6 +4,7 @@ import com.example.todo.models.Task;
 import com.example.todo.services.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +21,9 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public Task createTask(@Valid @RequestBody Task task) {
-        task.setCreatedAt(LocalDateTime.now());
-        task.setUpdatedAt(LocalDateTime.now());
-        return taskService.createTask(task);
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
+        Task newTask = taskService.createTask(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newTask);
     }
 
     @PutMapping("/{id}")
@@ -42,7 +42,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable UUID id) {
+    public ResponseEntity<Task> deleteTask(@PathVariable UUID id) {
         Optional<Task> optionalTask = Optional.ofNullable(taskService.getTaskById(id));
         if (optionalTask.isEmpty()) {
             return ResponseEntity.notFound().build();
