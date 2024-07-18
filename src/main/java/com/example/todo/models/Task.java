@@ -31,12 +31,7 @@ public class Task {
     private LocalDateTime updatedAt;
 
     @Column(name = "status", nullable = false)
-    private String status;
-
-    @ManyToOne
-    @JoinColumn(name = "priority_id")
-    private Priority priority;
-
+    private Boolean status;
     public Task() {
     }
 
@@ -88,20 +83,12 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
     }
 
     @Override
@@ -114,7 +101,6 @@ public class Task {
                ", createdAt=" + createdAt +
                ", updatedAt=" + updatedAt +
                ", status=" + status +
-               ", priority=" + priority +
                '}';
     }
 }

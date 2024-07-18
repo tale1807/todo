@@ -11,9 +11,9 @@ import java.util.UUID;
 @Service
 public class TaskService {
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
+    @Autowired
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }

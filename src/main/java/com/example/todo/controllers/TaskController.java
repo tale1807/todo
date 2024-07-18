@@ -57,7 +57,7 @@ public class TaskController {
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<Task> updateTaskStatus(@PathVariable UUID id, @RequestBody String status) {
+    public ResponseEntity<Task> updateTaskStatus(@PathVariable UUID id, @RequestBody Boolean status) {
         Optional<Task> optionalTask = Optional.ofNullable(taskService.getTaskById(id));
         if (optionalTask.isEmpty()) {
             return ResponseEntity.notFound().build();
