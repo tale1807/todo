@@ -1,7 +1,7 @@
-package com.example.todo.services;
+package com.example.todo.service;
 
-import com.example.todo.models.User;
-import com.example.todo.repositories.UserRepository;
+import com.example.todo.model.User;
+import com.example.todo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

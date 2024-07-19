@@ -1,6 +1,9 @@
-package com.example.todo.repositories;
+package com.example.todo.repository;
 
-import com.example.todo.models.Task;
+import com.example.todo.dto.TaskRequest;
+import com.example.todo.dto.TaskResponse;
+import com.example.todo.model.Task;
+import org.apache.tomcat.util.threads.TaskQueue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
