@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TaskErrorResponse {
+public class UserErrorResponse {
     private String message;
 }

@@ -1,9 +1,6 @@
-package com.example.todo.repository;
+package com.example.todo.dao.repository;
 
-import com.example.todo.dto.TaskRequest;
-import com.example.todo.dto.TaskResponse;
-import com.example.todo.model.Task;
-import org.apache.tomcat.util.threads.TaskQueue;
+import com.example.todo.dao.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, UUID> {
+
 }

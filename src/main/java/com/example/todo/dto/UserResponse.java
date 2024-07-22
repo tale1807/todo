@@ -1,6 +1,5 @@
 package com.example.todo.dto;
 
-import com.example.todo.dao.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,16 +8,15 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class TaskResponse {
+public class UserResponse {
     private UUID id;
-    private User userId;
-    private String title;
-    private String description;
-    private String status;
+    private String name;
+    private String email;
+    private String password;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

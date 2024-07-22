@@ -1,7 +1,9 @@
-package com.example.todo.model;
+package com.example.todo.dao.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
@@ -11,6 +13,8 @@ import java.util.UUID;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder(setterPrefix = "set")
 @Table(name = "users")
 public class User {
 
@@ -19,36 +23,23 @@ public class User {
     private UUID id;
 
     @Column(name = "name", nullable = false)
-    @NonNull
     private String name;
 
     @Column(name = "email", nullable = false, unique = true)
-    @NonNull
     private String email;
 
     @Column(name = "password", nullable = false)
-    @NonNull
     private String password;
 
     @Column(name = "created_at")
-    @NonNull
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    @NonNull
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-    @NonNull
     private List<Task> tasks;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
