@@ -25,7 +25,7 @@ public class Reminder {
 
     @ManyToOne
     @JoinColumn(name = "task_id", nullable = false)
-    private Task taskId;
+    private Task task;
 
 
     @Column(name = "reminder_date", nullable = false)

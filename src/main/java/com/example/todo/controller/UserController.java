@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
-@AllArgsConstructor(onConstructor_ = {@Autowired})
+@AllArgsConstructor
 public class UserController {
 
     private final UserFacade userFacade;
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponse updateTask(@PathVariable("id") UUID id, @Valid @RequestBody UserRequest userRequest) {
+    public UserResponse updateUser(@PathVariable("id") UUID id, @Valid @RequestBody UserRequest userRequest) {
         return userFacade.updateUser(id, userRequest);
     }
 

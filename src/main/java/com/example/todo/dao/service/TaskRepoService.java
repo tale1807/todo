@@ -21,23 +21,18 @@ import static java.lang.String.format;
 public class TaskRepoService {
 
     private final TaskRepository taskRepository;
-    private final TaskRequestMapper taskRequestMapper;
-    private final TaskResponseMapper taskResponseMapper;
 
     public Task createTask(Task task) {
         try{
             return taskRepository.save(task);
         } catch (Exception e){
-            throw new TaskCreationException(format("Error creating task: %s", e.getMessage()));
+            throw new TaskCreationException(format("Ошибка при создании задачи: %s", e.getMessage()));
         }
     }
 
     public Task getTaskById(UUID id) {
         return taskRepository.findById(id)
-                .orElseThrow(() ->
-                        new TaskNotFoundException(
-                                format("Не найдена задача по заданному id - %s", id))
-                );
+                .orElseThrow(() -> new TaskNotFoundException(format("Не найдена задача по заданному id - %s", id)));
     }
 
     public List<Task> getAllTasks() {
@@ -50,26 +45,6 @@ public class TaskRepoService {
             throw new TaskNotFoundException(format("Не найдена задача по заданному id - %s", id));
         }
         taskRepository.deleteById(id);
-    }
-
-    public TaskResponse toTasks(Task task) {
-        return taskResponseMapper.toTasks(task);
-    }
-
-    public List<TaskResponse> toTasks(List<Task> tasks) {
-        return taskResponseMapper.toTasks(tasks);
-    }
-
-    public Task toTask(TaskRequest taskRequest) {
-        return taskRequestMapper.toTask(taskRequest);
-    }
-
-    public void updateTask(TaskRequest taskRequest, Task task) {
-        taskRequestMapper.toTask(taskRequest, task);
-    }
-
-    public void updateTaskStatus(Boolean status, Task task) {
-        taskRequestMapper.updateTaskStatusFromRequest(status, task);
     }
 }
 

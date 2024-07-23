@@ -26,8 +26,8 @@ public class Tag {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "tag_id")
+    @OneToMany
+    @JoinColumn(name = "task_tag_id")
     private List<TaskTag> taskTags;
 
 }

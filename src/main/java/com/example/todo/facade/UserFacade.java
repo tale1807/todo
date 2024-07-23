@@ -26,27 +26,29 @@ import static java.lang.String.format;
 public class UserFacade {
 
     private final UserRepoService userRepoService;
+    private final UserResponseMapper userResponseMapper;
+    private final UserRequestMapper userRequestMapper;
 
     public UserResponse createUser(UserRequest userRequest) {
-            User user = userRepoService.toUser(userRequest);
-            return userRepoService.toUsers(userRepoService.createUser(user));
+            User user = userRequestMapper.toUser(userRequest);
+            return userResponseMapper.toUsers(userRepoService.createUser(user));
     }
 
     public UserResponse getUserById(UUID id) {
         User user = userRepoService.getUserById(id);
-        return userRepoService.toUsers(user);
+        return userResponseMapper.toUsers(user);
     }
 
     public List<UserResponse> getAllUsers() {
         List<User> users = userRepoService.getAllUsers();
-        return userRepoService.toUsers(users);
+        return userResponseMapper.toUsers(users);
 
     }
 
     public UserResponse updateUser(UUID id, UserRequest userRequest) {
         User existingUser = userRepoService.getUserById(id);
-        userRepoService.updateUser(userRequest, existingUser);
-        return userRepoService.toUsers(userRepoService.createUser(existingUser));
+        userRequestMapper.toUser(userRequest, existingUser);
+        return userResponseMapper.toUsers(userRepoService.createUser(existingUser));
     }
 
     public void deleteUser(UUID id) {

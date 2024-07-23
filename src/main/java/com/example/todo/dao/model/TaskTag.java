@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,17 +16,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Table(name = "task_tags")
-public class TaskTag implements Serializable {
+public class TaskTag {
 
+    @Column(name = "task_tag_id")
     @EmbeddedId
     private TaskTagId id;
-
-    @ManyToOne
-    @JoinColumn(name = "task_id", insertable = false, updatable = false)
-    private Task task;
-
-    @ManyToOne
-    @JoinColumn(name = "tag_id", insertable = false, updatable = false)
-    private Tag tag;
 
 }

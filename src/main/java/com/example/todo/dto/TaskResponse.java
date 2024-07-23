@@ -1,6 +1,9 @@
 package com.example.todo.dto;
 
 import com.example.todo.dao.model.User;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

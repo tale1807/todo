@@ -27,7 +27,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @Column(name = "title")
     private String title;
@@ -46,11 +46,11 @@ public class Task {
     @Column(name = "status")
     private Boolean status;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
     @JoinColumn(name = "task_id")
     private List<Reminder> reminders;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
     @JoinColumn(name = "task_id")
     private List<TaskTag> taskTags;
 

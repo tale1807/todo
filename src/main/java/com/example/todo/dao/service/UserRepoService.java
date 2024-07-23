@@ -27,24 +27,18 @@ import static java.lang.String.format;
 public class UserRepoService {
 
     private final UserRepository userRepository;
-    private final UserRequestMapper userRequestMapper;
-    private final UserResponseMapper userResponseMapper;
 
     public User createUser(User user) {
         try {
             return userRepository.save(user);
         } catch (Exception e) {
-            throw new UserCreationException(format("Error creating task: %s", e.getMessage()));
-
+            throw new UserCreationException(format("Ошибка при создании пользователя: %s", e.getMessage()));
         }
     }
 
     public User getUserById(UUID id) {
         return userRepository.findById(id)
-                .orElseThrow(() ->
-                        new UserNotFoundException(
-                                format("Не найден пользователь по заданному id - %s", id))
-                );
+                .orElseThrow(() -> new UserNotFoundException(format("Не найден пользователь по заданному id - %s", id)));
     }
 
     public List<User> getAllUsers() {
@@ -57,22 +51,6 @@ public class UserRepoService {
             throw new UserNotFoundException((format("Не найден пользователь по заданному id - %s", id)));
         }
         userRepository.deleteById(id);
-    }
-
-    public UserResponse toUsers(User user) {
-        return userResponseMapper.toUsers(user);
-    }
-
-    public List<UserResponse> toUsers(List<User> users) {
-        return userResponseMapper.toUsers(users);
-    }
-
-    public User toUser(UserRequest userRequest) {
-        return userRequestMapper.toUser(userRequest);
-    }
-
-    public void updateUser(UserRequest userRequest, User user) {
-        userRequestMapper.toUser(userRequest, user);
     }
 
 }

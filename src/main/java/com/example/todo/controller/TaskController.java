@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/tasks")
-@AllArgsConstructor(onConstructor_ = {@Autowired})
+@AllArgsConstructor
 public class TaskController {
 
     private final TaskFacade taskFacade;

@@ -14,10 +14,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskTagId implements Serializable {
-
-    @Column(name = "task_id")
-    private UUID taskId;
-
-    @Column(name = "tag_id")
-    private UUID tagId;
+    private UUID task;
+    private UUID tag;
 }
