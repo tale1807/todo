@@ -14,7 +14,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(setterPrefix = "set")
+@Builder
 @Table(name = "reminders")
 public class Reminder {
 

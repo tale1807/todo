@@ -1,9 +1,8 @@
 package com.example.todo.controller;
 
-import com.example.todo.dao.mapper.TaskResponseMapper;
 import com.example.todo.dto.TaskRequest;
 import com.example.todo.dto.TaskResponse;
-import com.example.todo.dao.service.TaskService;
+import com.example.todo.facade.TaskFacade;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,36 +16,36 @@ import java.util.UUID;
 @AllArgsConstructor(onConstructor_ = {@Autowired})
 public class TaskController {
 
-    private final TaskService taskService;
+    private final TaskFacade taskFacade;
 
     @PostMapping
     public TaskResponse createTask(@Valid @RequestBody TaskRequest taskRequest) {
-        return taskService.createTask(taskRequest);
+        return taskFacade.createTask(taskRequest);
     }
 
     @PutMapping("/{id}")
     public TaskResponse updateTask(@PathVariable("id") UUID id, @Valid @RequestBody TaskRequest taskRequest) {
-        return taskService.updateTask(id, taskRequest);
+        return taskFacade.updateTask(id, taskRequest);
     }
 
     @GetMapping
     public List<TaskResponse> getAllTasks() {
-        return taskService.getAllTasks();
+        return taskFacade.getAllTasks();
     }
 
     @GetMapping("/{id}")
     public TaskResponse getTaskById(@PathVariable("id") UUID id) {
-        return taskService.getTaskById(id);
+        return taskFacade.getTaskById(id);
     }
 
     @PatchMapping("/{id}/status")
     public TaskResponse updateTaskStatus(@PathVariable UUID id, @RequestBody Boolean status) {
-        return taskService.updateTaskStatus(id, status);
+        return taskFacade.updateTaskStatus(id, status);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable UUID id) {
-        taskService.deleteTask(id);
+        taskFacade.deleteTask(id);
     }
 }
 

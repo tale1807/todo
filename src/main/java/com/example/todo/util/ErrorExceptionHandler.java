@@ -1,6 +1,6 @@
-package com.example.todo.dao.exception;
+package com.example.todo.util;
 
-import com.example.todo.util.UserErrorResponse;
+import com.example.todo.dao.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

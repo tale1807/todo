@@ -14,7 +14,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(setterPrefix = "set")
+@Builder
 @Table(name = "tags")
 public class Tag {
 
@@ -26,7 +26,8 @@ public class Tag {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "tag_id")
     private List<TaskTag> taskTags;
 
 }

@@ -1,4 +1,4 @@
-package com.example.todo.dao.mapper;
+package com.example.todo.mapper;
 
 import com.example.todo.dao.model.User;
 import com.example.todo.dto.UserRequest;
@@ -8,10 +8,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserRequestMapper {
-
-    UserRequestMapper INSTANCE = Mappers.getMapper(UserRequestMapper.class);
 
     User toUser(UserRequest userRequest);
 

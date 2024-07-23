@@ -1,8 +1,6 @@
 package com.example.todo.controller;
 
-import com.example.todo.dao.service.UserService;
-import com.example.todo.dto.TaskRequest;
-import com.example.todo.dto.TaskResponse;
+import com.example.todo.facade.UserFacade;
 import com.example.todo.dto.UserRequest;
 import com.example.todo.dto.UserResponse;
 import jakarta.validation.Valid;
@@ -18,31 +16,31 @@ import java.util.UUID;
 @AllArgsConstructor(onConstructor_ = {@Autowired})
 public class UserController {
 
-    private final UserService userService;
+    private final UserFacade userFacade;
 
     @PostMapping
     public UserResponse createUser(@Valid @RequestBody UserRequest userRequest) {
-        return userService.createUser(userRequest);
+        return userFacade.createUser(userRequest);
     }
 
     @GetMapping
     public List<UserResponse> getAllUsers() {
-        return userService.getAllUsers();
+        return userFacade.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public UserResponse getTaskById(@PathVariable("id") UUID id) {
-        return userService.getUserById(id);
+    public UserResponse getUserById(@PathVariable("id") UUID id) {
+        return userFacade.getUserById(id);
     }
 
     @PutMapping("/{id}")
     public UserResponse updateTask(@PathVariable("id") UUID id, @Valid @RequestBody UserRequest userRequest) {
-        return userService.updateUser(id, userRequest);
+        return userFacade.updateUser(id, userRequest);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable UUID id) {
-        userService.deleteUser(id);
+        userFacade.deleteUser(id);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.todo.dto;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -14,15 +15,13 @@ import lombok.Setter;
 @Setter
 public class UserRequest {
 
-    @NotNull(message = "Name cannot be empty")
-    @Size(min = 1, max = 100, message = "Title must be between 1 and 100 characters")
+    @NotBlank(message = "Name cannot be blank")
     private String name;
 
-    @NotNull(message = "Email cannot be empty")
+    @NotBlank(message = "Email cannot be blank")
     @Email
     private String email;
 
-    @NotNull(message = "Password cannot be empty")
-    @Size(min = 1, max = 255, message = "Title must be between 1 and 255 characters")
+    @NotBlank(message = "Password cannot be blank")
     private String password;
 }

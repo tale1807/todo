@@ -1,16 +1,13 @@
-package com.example.todo.dao.mapper;
+package com.example.todo.mapper;
 
 import com.example.todo.dao.model.Task;
 import com.example.todo.dto.TaskResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TaskResponseMapper {
-
-    TaskResponseMapper INSTANCE = Mappers.getMapper(TaskResponseMapper.class);
 
     TaskResponse toTasks(Task task);
 

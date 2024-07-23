@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(setterPrefix = "set")
+@Builder
 @Table(name = "task_tags")
 public class TaskTag implements Serializable {
 
@@ -21,13 +21,11 @@ public class TaskTag implements Serializable {
     private TaskTagId id;
 
     @ManyToOne
-    @MapsId("taskId")
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task_id", insertable = false, updatable = false)
     private Task task;
 
     @ManyToOne
-    @MapsId("tagId")
-    @JoinColumn(name = "tag_id")
+    @JoinColumn(name = "tag_id", insertable = false, updatable = false)
     private Tag tag;
 
 }

@@ -16,7 +16,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(setterPrefix = "set")
+@Builder
 @Table(name = "tasks")
 public class Task {
 
@@ -46,10 +46,12 @@ public class Task {
     @Column(name = "status")
     private Boolean status;
 
-    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "task_id")
     private List<Reminder> reminders;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "task_id")
     private List<TaskTag> taskTags;
 
 
