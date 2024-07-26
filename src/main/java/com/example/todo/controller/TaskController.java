@@ -5,7 +5,6 @@ import com.example.todo.dto.TaskResponse;
 import com.example.todo.facade.TaskFacade;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,15 +1,16 @@
 package com.example.todo.dao.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -51,9 +52,7 @@ public class Task {
     private List<Reminder> reminders;
 
     @OneToMany
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task_tag_id")
     private List<TaskTag> taskTags;
-
-
 
 }

@@ -4,10 +4,6 @@ import com.example.todo.dao.exception.TaskCreationException;
 import com.example.todo.dao.exception.TaskNotFoundException;
 import com.example.todo.dao.model.Task;
 import com.example.todo.dao.repository.TaskRepository;
-import com.example.todo.dto.TaskRequest;
-import com.example.todo.dto.TaskResponse;
-import com.example.todo.mapper.TaskRequestMapper;
-import com.example.todo.mapper.TaskResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +42,8 @@ public class TaskRepoService {
         }
         taskRepository.deleteById(id);
     }
+
+
 }
 
 

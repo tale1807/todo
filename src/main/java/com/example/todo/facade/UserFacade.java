@@ -1,25 +1,16 @@
 package com.example.todo.facade;
 
-import com.example.todo.dao.exception.TaskCreationException;
-import com.example.todo.dao.exception.UserNotFoundException;
-import com.example.todo.dao.model.Task;
-import com.example.todo.dao.service.TaskRepoService;
-import com.example.todo.dao.service.UserRepoService;
-import com.example.todo.dto.TaskRequest;
-import com.example.todo.dto.TaskResponse;
-import com.example.todo.mapper.UserRequestMapper;
-import com.example.todo.mapper.UserResponseMapper;
 import com.example.todo.dao.model.User;
-import com.example.todo.dao.repository.UserRepository;
+import com.example.todo.dao.service.UserRepoService;
 import com.example.todo.dto.UserRequest;
 import com.example.todo.dto.UserResponse;
+import com.example.todo.mapper.UserRequestMapper;
+import com.example.todo.mapper.UserResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-
-import static java.lang.String.format;
 
 @Service
 @AllArgsConstructor
