@@ -1,8 +1,5 @@
 package com.example.todo.controller;
 
-import com.example.todo.dao.model.Task;
-import com.example.todo.dto.TaskRequest;
-import com.example.todo.dto.TaskResponse;
 import com.example.todo.dto.UserRequest;
 import com.example.todo.facade.TaskFacade;
 import com.example.todo.facade.UserFacade;
@@ -14,28 +11,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
 import java.util.UUID;
 
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Autowired
-    private TaskFacade taskFacade;
+    TaskFacade taskFacade;
 
     @Autowired
-    private UserFacade userFacade;
+    UserFacade userFacade;
 
-    private UUID user;
+    UUID user;
 
     @BeforeEach
     void setup() {

@@ -15,23 +15,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TaskControllerTest {
+class TaskControllerTest {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Autowired
-    private TaskFacade taskFacade;
+    TaskFacade taskFacade;
 
     @Autowired
-    private UserFacade userFacade;
+    UserFacade userFacade;
 
-    private UUID user;
-    private UUID task;
+    UUID user;
+    UUID task;
 
     @BeforeEach
     public void setUp() {
