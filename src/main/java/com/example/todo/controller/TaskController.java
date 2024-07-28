@@ -3,6 +3,8 @@ package com.example.todo.controller;
 import com.example.todo.dto.TaskRequest;
 import com.example.todo.dto.TaskResponse;
 import com.example.todo.facade.TaskFacade;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,13 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/tasks")
 @AllArgsConstructor
+@Schema(name = "Контроллер для работы с задачами")
 public class TaskController {
 
     private final TaskFacade taskFacade;
 
+
+    @Schema(name = "Метод для создания задачи")
     @PostMapping
     public TaskResponse createTask(@Valid @RequestBody TaskRequest taskRequest) {
         return taskFacade.createTask(taskRequest);

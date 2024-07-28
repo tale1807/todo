@@ -1,5 +1,6 @@
 package com.example.todo.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(name = "Входные данные для запроса по задаче")
 public class TaskRequest {
 
     @NotNull(message = "user ID cannot be null")
